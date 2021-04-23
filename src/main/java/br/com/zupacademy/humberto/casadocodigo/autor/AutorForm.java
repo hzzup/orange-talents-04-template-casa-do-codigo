@@ -22,8 +22,11 @@ public class AutorForm {
 		this.descricao = descricao;
 	}
 
-	public Autor criarAutor() {
-		Autor autor = new Autor(email,nome,descricao);
-		return autor;
+	public Autor criarAutor(AutorRepository autorRep) {
+		if(autorRep.findByEmail(email) == null) {
+			Autor autorCriado = new Autor(email,nome,descricao);
+			return autorCriado;
+		}
+		return null;
 	}
 }
