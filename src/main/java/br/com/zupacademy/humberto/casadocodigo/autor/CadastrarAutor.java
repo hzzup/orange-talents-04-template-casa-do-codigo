@@ -4,7 +4,8 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,15 +18,18 @@ public class CadastrarAutor {
 	@Autowired
 	private AutorRepository autorRep;
 	
+	@Autowired
+	private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
+	
+	@InitBinder
+	public void init(WebDataBinder binder) {
+		binder.addValidators(proibeEmailDuplicadoAutorValidator);
+	}
+	
 	@PostMapping @Transactional
-	public ResponseEntity<?> cadastrar(@RequestBody @Valid AutorForm autorForm) {
-		Autor autor = autorForm.criarAutor(autorRep);
-		if (autor == null) {
-			return ResponseEntity.badRequest().build();
-			
-		}
+	public void cadastrar(@RequestBody @Valid AutorForm autorForm) {
+		Autor autor = autorForm.criarAutor();
 		autorRep.save(autor);
-		return ResponseEntity.ok().build();	
 	}
 	
 }
