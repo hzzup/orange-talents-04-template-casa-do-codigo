@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import br.com.zupacademy.humberto.casadocodigo.autor.Autor;
-
 @Component
 public class ProibeNomeDuplicadoValidator implements Validator{
 
