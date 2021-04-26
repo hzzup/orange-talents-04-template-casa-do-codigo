@@ -4,9 +4,12 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.zupacademy.humberto.casadocodigo.validacao.UniqueValue;
+
 public class AutorForm {
 	
 	@Email @NotBlank
+	@UniqueValue(domainClass = Autor.class, fieldName = "email")
 	private String email;
 	
 	@NotBlank
