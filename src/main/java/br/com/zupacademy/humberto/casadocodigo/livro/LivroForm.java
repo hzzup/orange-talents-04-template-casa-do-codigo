@@ -47,7 +47,6 @@ public class LivroForm {
 	@NotNull @FindObjectId(domainClass = Categoria.class, fieldName = "id")
 	private Long categoriaId;
 	
-	@NotNull @FindObjectId(domainClass = Autor.class, fieldName = "id")
 	private Long autorId;
 
 	public LivroForm(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario,
