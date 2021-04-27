@@ -3,7 +3,7 @@ package br.com.zupacademy.humberto.casadocodigo.livro;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import br.com.zupacademy.humberto.casadocodigo.autor.Autor;
+import br.com.zupacademy.humberto.casadocodigo.autor.AutorDto;
 
 public class LivroDetalhesDto {
 
@@ -15,12 +15,10 @@ public class LivroDetalhesDto {
 	private int numeroPaginas;
 	private String isbn;
 	private LocalDate dataPublicacao;
-	private Autor autor;
-	
+	private AutorDto autorDto;
 	
 	@Deprecated
 	public LivroDetalhesDto() {}
-
 
 	public LivroDetalhesDto (Livro livro) {
 		this.id = livro.getId();
@@ -31,54 +29,42 @@ public class LivroDetalhesDto {
 		this.numeroPaginas = livro.getNumeroPaginas();
 		this.isbn = livro.getIsbn();
 		this.dataPublicacao = livro.getDataPublicacao();
-		this.autor = livro.getAutor();
+		this.autorDto = new AutorDto(livro.getAutor());//livro.getAutor();
 	}
-
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public String getTitulo() {
 		return titulo;
 	}
-
 
 	public BigDecimal getPreco() {
 		return preco;
 	}
 
-
 	public String getResumo() {
 		return resumo;
 	}
-
 
 	public String getSumario() {
 		return sumario;
 	}
 
-
 	public int getNumeroPaginas() {
 		return numeroPaginas;
 	}
-
 
 	public String getIsbn() {
 		return isbn;
 	}
 
-
 	public LocalDate getDataPublicacao() {
 		return dataPublicacao;
 	}
 
-
-	public Autor getAutor() {
-		return autor;
+	public AutorDto getAutorDto() {
+		return autorDto;
 	}
-	
-	
-
 }
