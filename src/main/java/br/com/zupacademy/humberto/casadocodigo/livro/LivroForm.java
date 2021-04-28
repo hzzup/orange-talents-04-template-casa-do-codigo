@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -47,6 +46,7 @@ public class LivroForm {
 	@NotNull @FindObjectId(domainClass = Categoria.class, fieldName = "id")
 	private Long categoriaId;
 	
+	@NotNull @FindObjectId(domainClass = Autor.class, fieldName = "id")
 	private Long autorId;
 
 	public LivroForm(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario,

@@ -7,12 +7,14 @@ import javax.validation.constraints.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.zupacademy.humberto.casadocodigo.validacao.FindObjectId;
+
 public class EstadoForm {
 	
 	@NotBlank
 	private String nome;
 	
-	@NotNull
+	@NotNull @FindObjectId(domainClass = Pais.class, fieldName = "id")
 	private Long paisId;
 
 	public String getNome() {

@@ -33,7 +33,4 @@ public class ProibeEstadoRepetidoNoPais implements Validator{
 			errors.rejectValue("paisId", null,"Pais Id:"+form.getPaisId()+" já possui o estado "+form.getNome()+" cadastrado!");
 		}
 	}
-
-	
-	
 }

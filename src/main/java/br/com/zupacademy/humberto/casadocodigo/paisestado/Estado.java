@@ -27,5 +27,9 @@ public class Estado {
 	
 	@Deprecated
 	public Estado() {}
+
+	public String getNome() {
+		return nome;
+	}
 	
 }
